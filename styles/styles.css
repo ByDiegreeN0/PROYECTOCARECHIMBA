@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    
+}
+
+body {
+    background-color: rgba(83, 200, 220) 
+
+}
+
+#reloj {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.navidad-container {
+    display: flex;
+    width: 100%;
+    padding: 6rem;
+    align-items: center;
+}
+
+.navidad-card {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.navidad-tittle h1 {
+    text-align: center;
+    color: #f44336;
+}
+
+.navidad-content {
+    display: flex;
+    justify-content: center;
+}
+
+.navidad-box {
+    margin: 2rem;
+}
+
+.navidad-box {
+    width: 60px;
+    height: 40px;
+    border: 2px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.navidad-box-content p {
+    color: #fff;
+    font-size: 20px;
+}
+
+.navidad-buttons {
+    display: flex;
+    justify-content: center;
+    color: rgb(255, 255, 255) 
+}
+
+.navidad-btn {
+    padding: 1rem 2rem;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all .3s ease;
+    margin-left: 2rem;
+    border-radius: 20px;
+    border: 1px solid #f44336;
+
+
+}
+
+.navidad-btn:hover {
+    background-color: #ae2117;
+    border: 1px solid #ae2117;
+    color: #fff;
+    transform: translateY(-5%);
+
+}
+
+
+
+.navidad-img {
+    width: 600px;
+    height: 600px;
+
+}
+
+.papaNoelOnfOff {
+    width: 100%;
+    height: 100%; 
+    background-image: url('../src/img/papaNoel.png');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    z-index: 20;
+}
+
+.papaNoelOnfOff.on {
+    background-image: url('../src/img/papaNoel.gif');
+}
+
