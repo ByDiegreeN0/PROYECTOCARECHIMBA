@@ -1,5 +1,5 @@
 // Función para obtener el tiempo faltante
-let FechaLimite = new Date('2024-07-18');
+let FechaLimite = new Date('2024-12-14');
 
 function obtenerTiempoFaltante(FechaLimite) {
     let tiempoActual = new Date();
@@ -65,7 +65,38 @@ function cuentaRegresiva(FechaLimite, reloj, mensaje) {
         
         if (FechaLimite <= new Date()) {
             clearInterval(tiempoActual);
-            r.innerHTML = mensaje;
+            r.innerHTML = `        
+            <div class="navidad-tittle">
+                <h1>Faltan para Navidad</h1>
+            </div>
+
+            <div class="navidad-content">
+                <div class="navidad-box">
+                    <div class="navidad-box-content">
+                        <p>${t.diasFaltantes}</p>
+                    </div>
+                </div>
+                <div class="navidad-box">
+                    <div class="navidad-box-content">
+                        <p>${t.horasFaltantes}</p>
+                    </div>
+                </div>
+                <div class="navidad-box">
+                    <div class="navidad-box-content">
+                        <p>${t.minutosFaltantes}</p>
+                    </div>
+                </div>
+                <div class="navidad-box">
+                    <div class="navidad-box-content">
+                        <p>${t.segundosFaltantes}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navidad-buttons">
+                <button class="navidad-btn"  onclick="bailar()">Play</button>
+                <button class="navidad-btn"   onclick="bailar()">Pause</button>
+            </div>`;
         }
 
     }, 1000);
