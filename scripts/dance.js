@@ -25,12 +25,6 @@ function pause() {
     }
 }
 
-
-function pause(){
-    musica.pause();
-}
-muñecoOff.addEventListener('click', bailar);
-
 // bailar cuando la resta de los tiempos de 0 
 
 FechaActual = new Date;

@@ -1,5 +1,4 @@
 // main.js
-
 let papaNoel = "off";
 const muñecoOff = document.querySelector('.papaNoelOnfOff');
 const botonSonido = new Audio('src/sound/botonbailar.mp3');
@@ -12,6 +11,7 @@ function bailar() {
         muñecoOff.classList.add("on");
         botonSonido.play(); // Reproducir sonido
         musica.play(); // Reproducir música
+        document.querySelectorAll('.navidad-btn').forEach(btn => btn.classList.add('on')); // Agregar clase "on" a todos los botones
     } 
 }
 
@@ -22,13 +22,14 @@ function pause() {
         muñecoOff.classList.remove("on");
         botonSonido.pause(); // Pausar sonido si está activo
         musica.pause(); // Pausar música si está activa
+        document.querySelectorAll('.navidad-btn').forEach(btn => btn.classList.remove('on')); // Quitar clase "on" a todos los botones
     }
 }
 
 muñecoOff.addEventListener('click', bailar);
 
 // Define la fecha límite para la cuenta regresiva (25 de diciembre de 2024)
-const FechaLimite = new Date('2024-06-25');
+const FechaLimite = new Date('2024-07-19T17:29:30');
 
 // Función que calcula el tiempo restante hasta la fecha límite
 function obtenerTiempoFaltante(FechaLimite) {
@@ -83,21 +84,25 @@ function cuentaRegresiva(FechaLimite, reloj, mensaje) {
                     <div class="navidad-box-content">
                         <p>${t.diasFaltantes}</p>
                     </div>
+                    <p>D</p>
                 </div>
                 <div class="navidad-box">
                     <div class="navidad-box-content">
                         <p>${t.horasFaltantes}</p>
                     </div>
+                    <p>H</p>
                 </div>
                 <div class="navidad-box">
                     <div class="navidad-box-content">
                         <p>${t.minutosFaltantes}</p>
                     </div>
+                    <p>M</p>
                 </div>
                 <div class="navidad-box">
                     <div class="navidad-box-content">
-                        <p>${t.segundosFaltantes}</p>
+                        <p>${t.segundosFaltantes}</p> 
                     </div>
+                    <p>S</p>
                 </div>
             </div>
 
@@ -105,7 +110,7 @@ function cuentaRegresiva(FechaLimite, reloj, mensaje) {
                 <button class="navidad-btn" disabled onclick="bailar()">Play</button>
                 <button class="navidad-btn" disabled onclick="pause()">Pause</button>
             </div>`;
-        
+
         // Si la fecha límite se ha alcanzado, detiene el intervalo y actualiza el contenido HTML
         if (FechaLimite <= new Date()) {
             clearInterval(tiempoActual);
@@ -119,21 +124,25 @@ function cuentaRegresiva(FechaLimite, reloj, mensaje) {
                     <div class="navidad-box-content">
                         <p>00</p>
                     </div>
+                    <p>D</p>
                 </div>
                 <div class="navidad-box">
                     <div class="navidad-box-content">
                         <p>00</p>
                     </div>
+                    <p>H</p>
                 </div>
                 <div class="navidad-box">
                     <div class="navidad-box-content">
                         <p>00</p>
                     </div>
+                    <p>M</p>
                 </div>
                 <div class="navidad-box">
                     <div class="navidad-box-content">
                         <p>00</p>
                     </div>
+                    <p>S</p>
                 </div>
             </div>
 
@@ -141,6 +150,9 @@ function cuentaRegresiva(FechaLimite, reloj, mensaje) {
                 <button class="navidad-btn" onclick="bailar()">Play</button>
                 <button class="navidad-btn" onclick="pause()">Pause</button>
             </div>`;
+
+            // Inicia la música y cambia el estado de los botones al finalizar el tiempo
+            bailar();
         }
     }, 1000); // Actualiza cada segundo
 }
