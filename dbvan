@@ -1,0 +1,15 @@
+
+function pause(){
+    if(papaNoel == "on"){
+        papaNoe = "on"
+        musica.pause();
+        muñecoOff.classList.remove("on");
+
+    }
+
+}
+
+if(papaNoel == "on"){
+    musica.play();
+
+}

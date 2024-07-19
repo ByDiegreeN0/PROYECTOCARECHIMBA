@@ -1,10 +1,39 @@
+// main.js
+
+let papaNoel = "off";
+const muñecoOff = document.querySelector('.papaNoelOnfOff');
+const botonSonido = new Audio('src/sound/botonbailar.mp3');
+const musica = new Audio('src/sound/allWant.mp3');
+
+// Función para cambiar la imagen de Papá Noel por el GIF y reproducir música
+function bailar() {
+    if (papaNoel === "off") {
+        papaNoel = "on";
+        muñecoOff.classList.add("on");
+        botonSonido.play(); // Reproducir sonido
+        musica.play(); // Reproducir música
+    } 
+}
+
+// Función para pausar la música y revertir la imagen de Papá Noel al estado inicial
+function pause() {
+    if (papaNoel === "on") {
+        papaNoel = "off";
+        muñecoOff.classList.remove("on");
+        botonSonido.pause(); // Pausar sonido si está activo
+        musica.pause(); // Pausar música si está activa
+    }
+}
+
+muñecoOff.addEventListener('click', bailar);
+
 // Define la fecha límite para la cuenta regresiva (25 de diciembre de 2024)
-let FechaLimite = new Date('2024-06-25');
+const FechaLimite = new Date('2024-06-25');
 
 // Función que calcula el tiempo restante hasta la fecha límite
 function obtenerTiempoFaltante(FechaLimite) {
     // Obtiene la fecha y hora actual
-    let tiempoActual = new Date();
+    const tiempoActual = new Date();
     // Calcula el tiempo restante en segundos
     let tiempoFaltante = (FechaLimite - tiempoActual + 1000) / 1000;
 
@@ -19,10 +48,10 @@ function obtenerTiempoFaltante(FechaLimite) {
     }
 
     // Calcula los valores de días, horas, minutos y segundos restantes
-    let segundosFaltantes = ('0' + Math.floor(tiempoFaltante % 60)).slice(-2);
-    let minutosFaltantes = ('0' + Math.floor((tiempoFaltante / 60) % 60)).slice(-2);
-    let horasFaltantes = ('0' + Math.floor((tiempoFaltante / 3600) % 24)).slice(-2);
-    let diasFaltantes = Math.floor(tiempoFaltante / 86400);
+    const segundosFaltantes = ('0' + Math.floor(tiempoFaltante % 60)).slice(-2);
+    const minutosFaltantes = ('0' + Math.floor((tiempoFaltante / 60) % 60)).slice(-2);
+    const horasFaltantes = ('0' + Math.floor((tiempoFaltante / 3600) % 24)).slice(-2);
+    const diasFaltantes = Math.floor(tiempoFaltante / 86400);
 
     // Devuelve un objeto con los valores calculados
     return {
@@ -41,12 +70,12 @@ function cuentaRegresiva(FechaLimite, reloj, mensaje) {
     // Configura un intervalo para actualizar la cuenta regresiva cada segundo
     const tiempoActual = setInterval(() => {
         // Obtiene el tiempo faltante utilizando la función definida anteriormente
-        let t = obtenerTiempoFaltante(FechaLimite);
+        const t = obtenerTiempoFaltante(FechaLimite);
 
         // Actualiza el contenido HTML con los valores de la cuenta regresiva
         r.innerHTML = `        
             <div class="navidad-tittle">
-                <h1>Faltan para Navidad</h1>
+                <h1>${mensaje}</h1>
             </div>
 
             <div class="navidad-content">
@@ -74,7 +103,7 @@ function cuentaRegresiva(FechaLimite, reloj, mensaje) {
 
             <div class="navidad-buttons">
                 <button class="navidad-btn" disabled onclick="bailar()">Play</button>
-                <button class="navidad-btn" disabled  onclick="bailar()">Pause</button>
+                <button class="navidad-btn" disabled onclick="pause()">Pause</button>
             </div>`;
         
         // Si la fecha límite se ha alcanzado, detiene el intervalo y actualiza el contenido HTML
@@ -110,15 +139,11 @@ function cuentaRegresiva(FechaLimite, reloj, mensaje) {
 
             <div class="navidad-buttons">
                 <button class="navidad-btn" onclick="bailar()">Play</button>
-                <button class="navidad-btn" onclick="bailar()">Pause</button>
+                <button class="navidad-btn" onclick="pause()">Pause</button>
             </div>`;
         }
     }, 1000); // Actualiza cada segundo
 }
 
 // Llama a la función cuentaRegresiva con la fecha límite y el ID del elemento HTML
-cuentaRegresiva(FechaLimite, 'reloj', '¡Feliz Navidad!');
-
-
-
-
+cuentaRegresiva(FechaLimite, 'reloj', 'Faltan para Navidad');
