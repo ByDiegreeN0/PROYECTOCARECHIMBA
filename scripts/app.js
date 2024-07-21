@@ -1,4 +1,3 @@
-// main.js
 let papaNoel = "off";
 const muñecoOff = document.querySelector('.papaNoelOnfOff');
 const botonSonido = new Audio('src/sound/botonbailar.mp3');
@@ -12,7 +11,7 @@ function bailar() {
         botonSonido.play(); // Reproducir sonido
         musica.play(); // Reproducir música
         document.querySelectorAll('.navidad-btn').forEach(btn => btn.classList.add('on')); // Agregar clase "on" a todos los botones
-    } 
+    }
 }
 
 // Función para pausar la música y revertir la imagen de Papá Noel al estado inicial
@@ -26,10 +25,8 @@ function pause() {
     }
 }
 
-muñecoOff.addEventListener('click', bailar);
-
 // Define la fecha límite para la cuenta regresiva (25 de diciembre de 2024)
-const FechaLimite = new Date('2024-07-19T17:29:30');
+const FechaLimite = new Date('2024-07-20T19:13:30');
 
 // Función que calcula el tiempo restante hasta la fecha límite
 function obtenerTiempoFaltante(FechaLimite) {
@@ -82,7 +79,7 @@ function cuentaRegresiva(FechaLimite, reloj, mensaje) {
             <div class="navidad-content">
                 <div class="navidad-box">
                     <div class="navidad-box-content">
-                        <p>${t.diasFaltantes}</p>
+                        <p>${t.diasFaltantes}0  </p>
                     </div>
                     <p>D</p>
                 </div>
@@ -150,9 +147,8 @@ function cuentaRegresiva(FechaLimite, reloj, mensaje) {
                 <button class="navidad-btn" onclick="bailar()">Play</button>
                 <button class="navidad-btn" onclick="pause()">Pause</button>
             </div>`;
-
-            // Inicia la música y cambia el estado de los botones al finalizar el tiempo
-            bailar();
+            // Inicia el baile de Papá Noel
+            muñecoOff.classList.add("on");
         }
     }, 1000); // Actualiza cada segundo
 }
